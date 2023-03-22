@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Grade.innerHTMLs</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5 px-5 box" >
+      
+      <div class="card">
+        <div class="card-header">Score Grade</div>
+        <div class="card-body">
+          <div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" />
+            </div>
+
+            <div class="mb-3">
+              <label for="dept" class="form-label">Department</label>
+              <input type="text" class="form-control" id="dept" />
+            </div>
+
+            <div class="mb-3">
+              <label for="score" class="form-label">Your Score</label>
+              <input type="number" class="form-control" id="score" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" onclick="getScore()">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3 px-5" id="score-card">
+      <div class="card">
+        <div class="card-header">Your Grade Card</div>
+        <div class="card-body">
+          <h3 id="student-name"></h3>
+
+          <h3 id="student-dept"></h3>
+
+          <h2 id="grade"></h2>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("score-card").style = "display:none;";
+
+      function getScore() {
+        document.getElementById("score-card").style = "display:block;";
+
+        let score = document.getElementById("score").value;
+        let grade = document.getElementById("grade");
+
+        document.getElementById("student-name").innerHTML =
+          document.getElementById("name").value;
+        document.getElementById("student-dept").innerHTML =
+          document.getElementById("dept").value;
+
+        if (score >= 70 && score <= 100) {
+          grade.innerHTML = `Your score is ${score} and grade is A`;
+        } else if (score >= 60 && score <= 69) {
+          grade.innerHTML = `Your score is ${score} and grade is B`;
+        } else if (score >= 50 && score <= 59) {
+          grade.innerHTML = `Your score is ${score} and grade is C`;
+        } else if (score >= 45 && score <= 49) {
+          grade.innerHTML = `Your score is ${score} and grade is D`;
+        } else if (score >= 40 && score <= 44) {
+          grade.innerHTML = `Your score is ${score} and grade is E`;
+        } else if (score > 100 || score < 0) {
+          grade.innerHTML = "Invalid Score Input";
+        } else {
+          grade.innerHTML = "You Fail";
+        }
+      }
+    </script>
+  </body>
+</html>
